@@ -4,7 +4,7 @@ set -e
 
 echo "start keepalived with parameter : $@ "
 
-if [[ -z "$2" ]] ;then
+if [[ -z "$1" ]] ;then
   echo "need more parameters"	
   exit 1
 fi
