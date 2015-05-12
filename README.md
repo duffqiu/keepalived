@@ -19,3 +19,4 @@ make
 - need to load the ip_vs module in coreos kernel before run keepalived `sudo modprobe -a ip_vs`
 
 - if forget the load the ip_vs, keepalived will make host systemd_coredump, and it will occupied cup very high
+- and keepalived log will show IPVS: Can't initialize ipvs: Protocol 
