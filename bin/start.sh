@@ -48,6 +48,6 @@ vrrp_instance VI_1 {
 }
 EOF
 
-/opt/bin/keepalived -C -P -l
+/opt/bin/keepalived -P -l -n -x
 
 
