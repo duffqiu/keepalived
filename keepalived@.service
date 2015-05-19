@@ -5,7 +5,7 @@ Requires=network.target
 
 [Service]
 Restart=on-failure
-RestartSec=60
+RestartSec=5
 EnvironmentFile=/etc/environment
 Environment="DOMAIN_NAME=cluster.duffqiu.org"
 ExecStartPre=-/usr/bin/docker kill keepalived-%i
@@ -13,9 +13,8 @@ ExecStartPre=-/usr/bin/docker rm  keepalived-%i
 ExecStartPre==/usr/bin/docker pull duffqiu/keepalived:latest
 ExecStart=/usr/bin/docker run  \
                               --name keepalived-%i \
-                              --hostname keepalived-%i.${DOMAIN_NAME} \
-                              --dns-search ${DOMAIN_NAME} \
-                              --dns ${COREOS_PRIVATE_IPV4} \
+                              --net host \
+                              --privileged \
                               duffqiu/keepalived:latest -vip=192.168.3.149
 ExecStop=-/usr/bin/docker stop keepalived-%i
 
