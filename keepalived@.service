@@ -1,13 +1,11 @@
 [Unit]
 Description=keepalived service unit
-After=skydns2.service
-Requires=network.target
+After=docker.service
 
 [Service]
-Restart=on-failure
+Restart=always
 RestartSec=5
 EnvironmentFile=/etc/environment
-Environment="DOMAIN_NAME=cluster.duffqiu.org"
 ExecStartPre=-/usr/bin/docker kill keepalived-%i
 ExecStartPre=-/usr/bin/docker rm  keepalived-%i
 ExecStartPre==/usr/bin/docker pull duffqiu/keepalived:latest
