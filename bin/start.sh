@@ -33,7 +33,7 @@ vrrp_sync_group VG1 {
 }
 
 vrrp_instance VI_1 {
-    state MASTER
+    state ${ROLE}
     interface eth0
     virtual_router_id 51
     priority 100
