@@ -6,6 +6,7 @@ After=docker.service
 Restart=always
 RestartSec=5
 EnvironmentFile=/etc/environment
+ExecStartPre=-/sbin/modprobe -a ip_vs
 ExecStartPre=-/usr/bin/docker kill keepalived-%i
 ExecStartPre=-/usr/bin/docker rm  keepalived-%i
 ExecStartPre==/usr/bin/docker pull duffqiu/keepalived:latest
