@@ -13,6 +13,7 @@ ExecStart=/usr/bin/docker run  \
                               --name keepalived-%i \
                               --net host \
                               --privileged \
+                              -e "ROLE=MASTER" \
                               duffqiu/keepalived:latest -vip=192.168.3.149
 ExecStop=-/usr/bin/docker stop keepalived-%i
 
